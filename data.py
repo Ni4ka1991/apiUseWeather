@@ -29,4 +29,4 @@ def dataLines(data):
     for i in data:
         print( f"{i:15} :  {data[i]}" )
 
-city, data = importData()        
+city, data = importData()

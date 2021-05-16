@@ -2,14 +2,12 @@
 
 # app.py 
 from os import system
-from data import *
+from data import data
 from paginator import *
 
 
 system( "clear" )
-city, data = importData()
 print()
 
 data_as_list = dataConversion( data )
-dataList( 1 )
-pagesNavigator()
+dataList( data_as_list, 1 )
