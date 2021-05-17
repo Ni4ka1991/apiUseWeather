@@ -11,13 +11,17 @@ API_KEY = "602e7b589d4da1ef52adda6224f21b23"
 
 def importData():
     city = input( "Enter a city weather in do you whant to know >>>  " )
-    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}"
-    print( "waiting for server response ..." )
     
-    res = requests.get( url )
-    data = res.json()
-
-    return [ city, data ]
+    if( city != "" ):
+        url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}"
+        print( "waiting for server response ..." )
+        res = requests.get( url )
+        data = res.json()
+        return [ city, data ]
+    
+    else:
+        print( "ERROR!" )
+    
 
 def dataConversion( data ):
     data_as_list = data.items()
@@ -28,5 +32,6 @@ def dataConversion( data ):
 def dataLines(data):
     for i in data:
         print( f"{i:15} :  {data[i]}" )
+
 
 city, data = importData()

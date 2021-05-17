@@ -10,15 +10,22 @@ import math
 from os import system
 from random import randint
 
-USERS_PG = 4
-pages = math.ceil( len( data )/USERS_PG )
+print()
+print("Hi, I'm < paginator > module" )
+input( "hit enter to continue" )
 
-#def listParam( data, USERS_PG ):
-#    pages = math.ceil( len( data )/USERS_PG )
-#    return pages
+
+USERS_PG = 4
+#pages = math.ceil( len( data )/USERS_PG )
+
+def listParam( data ):
+    pages = math.ceil( len( data )/USERS_PG )
+    return pages
 
 
 def dataList( data, init_pg = 1):
+ 
+ pages = listParam( data )
  
  system( "clear" )
  print()
@@ -41,53 +48,57 @@ def dataList( data, init_pg = 1):
 
  ####### PRINT USER LIST #########
 
-#anchor = 1 # initial page 
+def navigator( data ):
 
-#dataList( anchor ) 
+    pages = listParam( data )
+    anchor = 1 # initial page 
+    dataList( data, 1 ) 
 
-#while True:
+    while True:
+        navigator = input(\
+           "\n1. Enter p to change page number.\
+            \n2. Enter < / >  to go to the prev / next pages.\
+            \n3. Enter x to exit.\
+            \n4. Enter s to get info separately.\
+            \n >>>  "\
+        )
+        print()
+        if( navigator == "p" ):
+           invite = int( input( f"Select a page from the range 1 to {pages}  >>>  " ))
+           
+           if( anchor <= invite and invite <= pages ):
+               dataList( data, 1 )
+               anchor = invite
 
-# navigator = input(\
-#         "\n1. Enter p to change page number.\
-#         \n2. Enter < / >  to go to the prev / next pages.\
-#         \n3. Enter x to exit.\
-#         \n4. Enter s to get info separately.\
-#         \n >>>  "\
-#    )
-# print()
-# if( navigator == "p" ):
-#   invite = int( input( f"Select a page from the range 1 to {pages}  >>>  " ))
-  
-#   if( anchor <= invite and invite <= pages ):   
-#     dataList( invite )
-#     anchor = invite
+           else:
+               print( "Such page is not in the list" )
+               input( "hit ENTER to continue" )
 
-#   else:
-#     print( "Such page is not in the list" )
-#     input( "hit ENTER to continue" )
+        elif( navigator == "<"):
+          
+          if( anchor > 1):
+              anchor -= 1
+              dataList( anchor )
+          else:
+              print( "You are already  on the first page." )
+              input( "hit ENTER to continue" )
 
-# elif( navigator == "<"):
-#   if( anchor > 1):
-#    anchor -= 1
-#    dataList( anchor )
-#   else:
-#    print( "You are already  on the first page." )
-#    input( "hit ENTER to continue" )
-
-# elif( navigator == ">"):
-#   if( anchor < pages ):
-#    anchor += 1
-#    dataList( anchor )
-#   else:
-#    print( f"You are already  on the last < {pages} > page." )
-#    input( "hit ENTER to continue" )
-# elif( navigator == "x"):
-#    print( "By, by!" )
-#    break
-# elif( navigator == "s" ): 
-#  chooseOne( viewList )
-# else:
-#  print( "Be careful!" )
+        elif( navigator == ">"):
+          if( anchor < pages ):
+              anchor += 1
+              dataList( data, 1 )
+          else:
+              print( f"You are already  on the last < {pages} > page." )
+              input( "hit ENTER to continue" )
+      
+        elif( navigator == "x"):
+          print( "By, by!" )
+          break
+      
+        elif( navigator == "s" ):
+          chooseOne( data )
+      
+        else:
+          print( "Be careful!" )
  
-# ####### PRINT USER LIST #########
 

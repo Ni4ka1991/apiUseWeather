@@ -6,17 +6,17 @@
 from os import system
 
 from data import *
-
+from data import city
 
 def chooseOne( viewList ):
     print()
-    choice = input( f"Enter a ordinal number of param you want to know about {query} >>> " )
+    choice = input( f"Enter a ordinal number of param you want to know about weather in {city} >>> " )
     if choice in createList( viewList ):
         choice = int(choice)
         for i in range( len( viewList ) + 1 ):
             if( choice == i ):
                 print("-" * 20 )
-                print( f"You choosed for {query} parameter < {viewList[i - 1][0]} >. {viewList[i - 1][0]} = {viewList[i - 1][1]}" )
+                print( f"You choosed  parameter < {viewList[i - 1][0]} >. {viewList[i - 1][0]} = {viewList[i - 1][1]}" )
     else:
         print( "ERROR!" )
 

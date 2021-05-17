@@ -11,3 +11,4 @@ print()
 
 data_as_list = dataConversion( data )
 dataList( data_as_list, 1 )
+navigator( data_as_list )
